@@ -1,0 +1,37 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Navigation } from "./components/Navigation";
+import { AboutPage } from "./pages/AboutPage";
+import { ExperiencePage } from "./pages/ExperiencePage";
+import { ProjectsPage } from "./pages/ProjectsPage";
+import { BlogPage } from "./pages/BlogPage";
+import { PostDetailPage } from "./pages/PostDetailPage";
+import { EducationPage } from "./pages/EducationPage";
+import { ContactPage } from "./pages/ContactPage";
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <div className="min-h-screen bg-white">
+        <Navigation />
+        <Routes>
+          <Route path="/" element={<AboutPage />} />
+          <Route path="/experience" element={<ExperiencePage />} />
+          <Route path="/projects" element={<ProjectsPage />} />
+          <Route path="/blog" element={<BlogPage />} />
+          <Route path="/blog/:postId" element={<PostDetailPage />} />
+          <Route path="/education" element={<EducationPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+        </Routes>
+
+        {/* Footer */}
+        <footer className="bg-gray-900 text-white py-8 mt-auto">
+          <div className="max-w-5xl mx-auto px-6 text-center">
+            <p className="text-gray-400">
+              © 2026 Karl Hoang. Available for new opportunities.
+            </p>
+          </div>
+        </footer>
+      </div>
+    </BrowserRouter>
+  );
+}
