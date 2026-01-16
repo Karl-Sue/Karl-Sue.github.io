@@ -10,7 +10,7 @@ const profileData = {
   phone: "+61478038909",
   linkedIn: "https://www.linkedin.com/in/tuan-khanh-hoang-1a8a9b275/",
   github: "https://github.com/Karl-Sue",
-  imageUrl: "https://images.unsplash.com/photo-1581065178047-8ee15951ede6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBwb3J0cmFpdCUyMGJ1c2luZXNzfGVufDF8fHx8MTc2ODExODEyNXww&ixlib=rb-4.1.0&q=80&w=1080",
+  imageUrl: "/profile.jpg",
   bio: `I am a Software Engineering student at UWA with a strong interest in cloud computing and DevOps. 
         I enjoy building cloud-native and backend applications, have hands-on experience with AWS (Lambda, DynamoDB, IAM, CloudWatch, CI/CD), and am an AWS Certified Developer – Associate. 
         My current focus is on Golang and Python, backend development, automation, and cloud-native system design. 
