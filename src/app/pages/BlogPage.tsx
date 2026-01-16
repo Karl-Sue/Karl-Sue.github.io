@@ -2,52 +2,18 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Card } from "../components/ui/card";
 import { Badge } from "../components/ui/badge";
-import { Calendar, Clock, Tag, Plus, X } from "lucide-react";
-import {
-  Post,
-  categories,
-  getStoredPosts,
-  savePostsToStorage,
-} from "../data/posts";
+import { Calendar, Clock, Tag } from "lucide-react";
+import { Post, categories, getAllPosts } from "../data/posts";
 
 export function BlogPage() {
   const [posts, setPosts] = useState<Post[]>([]);
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
-  const [showAddModal, setShowAddModal] = useState(false);
-  const [newPost, setNewPost] = useState({
-    title: "",
-    excerpt: "",
-    category: "Frontend Development",
-    tags: "",
-    content: "",
-  });
 
-  // Load posts from storage on mount
+  // Load posts on mount
   useEffect(() => {
-    setPosts(getStoredPosts());
+    setPosts(getAllPosts());
   }, []);
-
-  // Save posts to storage whenever they change
-  useEffect(() => {
-    if (posts.length > 0) {
-      savePostsToStorage(posts);
-    }
-  }, [posts]);
-
-  // Prevent body scroll when modal is open
-  useEffect(() => {
-    if (showAddModal) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
-
-    // Cleanup on unmount
-    return () => {
-      document.body.style.overflow = "unset";
-    };
-  }, [showAddModal]);
 
   // Get all unique tags
   const allTags = Array.from(
@@ -61,38 +27,6 @@ export function BlogPage() {
     const matchesTag = !selectedTag || post.tags.includes(selectedTag);
     return matchesCategory && matchesTag;
   });
-
-  const handleAddPost = () => {
-    if (!newPost.title || !newPost.excerpt) {
-      alert("Please fill in title and excerpt");
-      return;
-    }
-
-    const post: Post = {
-      id: newPost.title.toLowerCase().replace(/\s+/g, "-"),
-      title: newPost.title,
-      excerpt: newPost.excerpt,
-      category: newPost.category,
-      tags: newPost.tags.split(",").map((tag) => tag.trim()).filter(Boolean),
-      date: new Date().toLocaleDateString("en-US", {
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-      }),
-      readTime: "5 min read",
-      content: newPost.content,
-    };
-
-    setPosts([post, ...posts]);
-    setShowAddModal(false);
-    setNewPost({
-      title: "",
-      excerpt: "",
-      category: "Frontend Development",
-      tags: "",
-      content: "",
-    });
-  };
 
   return (
     <div className="py-12 bg-gray-50 min-h-screen">
@@ -149,7 +83,7 @@ export function BlogPage() {
                 onClick={() => setSelectedTag(null)}
                 className="inline-flex items-center gap-1 px-3 py-1 bg-blue-600 text-white rounded-full text-sm hover:bg-blue-700 transition-colors"
               >
-                <X className="w-3 h-3" />
+                <Tag className="w-3 h-3" />
                 {selectedTag}
               </button>
             )}
@@ -233,130 +167,6 @@ export function BlogPage() {
           )}
         </div>
       </div>
-
-      {/* Floating Add Button */}
-      <button
-        onClick={() => setShowAddModal(true)}
-        className="fixed bottom-8 right-8 bg-blue-600 hover:bg-blue-700 text-white rounded-full p-4 shadow-lg transition-all hover:scale-110"
-        title="Add new post"
-      >
-        <Plus className="w-6 h-6" />
-      </button>
-
-      {/* Add Post Modal */}
-      {showAddModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-          <Card className="w-full max-w-2xl max-h-[90vh] overflow-y-auto modal-scrollbar">
-            <div className="p-6 pr-4">
-              <div className="flex items-center justify-between mb-6 pr-2">
-                <h2 className="text-2xl">Add New Post</h2>
-                <button
-                  onClick={() => setShowAddModal(false)}
-                  className="text-gray-500 hover:text-gray-700"
-                >
-                  <X className="w-6 h-6" />
-                </button>
-              </div>
-
-              <div className="space-y-4 pr-2">
-                <div>
-                  <label className="block text-sm font-semibold mb-2">
-                    Title *
-                  </label>
-                  <input
-                    type="text"
-                    value={newPost.title}
-                    onChange={(e) =>
-                      setNewPost({ ...newPost, title: e.target.value })
-                    }
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="Enter post title"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-semibold mb-2">
-                    Excerpt *
-                  </label>
-                  <textarea
-                    value={newPost.excerpt}
-                    onChange={(e) =>
-                      setNewPost({ ...newPost, excerpt: e.target.value })
-                    }
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    rows={3}
-                    placeholder="Brief description of the post"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-semibold mb-2">
-                    Category
-                  </label>
-                  <select
-                    value={newPost.category}
-                    onChange={(e) =>
-                      setNewPost({ ...newPost, category: e.target.value })
-                    }
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  >
-                    {categories.filter((c) => c !== "All").map((category) => (
-                      <option key={category} value={category}>
-                        {category}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-semibold mb-2">
-                    Tags (comma-separated)
-                  </label>
-                  <input
-                    type="text"
-                    value={newPost.tags}
-                    onChange={(e) =>
-                      setNewPost({ ...newPost, tags: e.target.value })
-                    }
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="e.g. React, TypeScript, Tutorial"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-semibold mb-2">
-                    Content (Markdown)
-                  </label>
-                  <textarea
-                    value={newPost.content}
-                    onChange={(e) =>
-                      setNewPost({ ...newPost, content: e.target.value })
-                    }
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent font-mono text-sm"
-                    rows={12}
-                    placeholder="Write your post content in markdown format..."
-                  />
-                </div>
-              </div>
-
-              <div className="flex gap-3 mt-6">
-                <button
-                  onClick={handleAddPost}
-                  className="flex-1 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg transition-colors"
-                >
-                  Add Post
-                </button>
-                <button
-                  onClick={() => setShowAddModal(false)}
-                  className="px-6 py-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
-                >
-                  Cancel
-                </button>
-              </div>
-            </div>
-          </Card>
-        </div>
-      )}
     </div>
   );
 }

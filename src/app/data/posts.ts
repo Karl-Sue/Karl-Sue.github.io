@@ -20,38 +20,24 @@ export const categories = [
   "Learning Progress",
 ];
 
-// Storage key for localStorage
-const STORAGE_KEY = "blog_posts";
-
-// Get posts from localStorage
-export function getStoredPosts(): Post[] {
-  if (typeof window === "undefined") return initialPosts;
-  
+// Load markdown content for a post
+export async function loadPostContent(id: string): Promise<string> {
   try {
-    const stored = localStorage.getItem(STORAGE_KEY);
-    if (stored) {
-      return JSON.parse(stored);
-    }
+    const response = await fetch(`/src/app/posts/${id}.md`);
+    if (!response.ok) throw new Error("Post not found");
+    return await response.text();
   } catch (error) {
-    console.error("Failed to load posts from storage:", error);
-  }
-  
-  return initialPosts;
-}
-
-// Save posts to localStorage
-export function savePostsToStorage(posts: Post[]): void {
-  if (typeof window === "undefined") return;
-  
-  try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(posts));
-  } catch (error) {
-    console.error("Failed to save posts to storage:", error);
+    console.error(`Failed to load post ${id}:`, error);
+    return "Content not available.";
   }
 }
 
 // Get a single post by ID
 export function getPostById(id: string): Post | undefined {
-  const posts = getStoredPosts();
-  return posts.find((post) => post.id === id);
+  return initialPosts.find((post) => post.id === id);
+}
+
+// Get all posts
+export function getAllPosts(): Post[] {
+  return initialPosts;
 }
