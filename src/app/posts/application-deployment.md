@@ -18,12 +18,12 @@ Understanding how each method works, let's see how each solution benefits busine
 
 | Feature | 1 EC2 | Separate Machines |
 |---------|-------|-------------------|
-| **Best For** | • Prototyping<br>• Small internal tools<br>• Low-budget MVP | • Production apps<br>• Scaling business<br>• High-scale environments |
-| **Scaling** | Vertical scaling only<br>Must upgrade entire server even if only one component is slow | Horizontal scaling<br>Scale frontend and backend independently based on demand |
+| **Best For** | Prototyping, Small internal tools, Low-budget MVP | Production apps, Scaling business, High-scale environments |
+| **Scaling** | Vertical scaling: Must upgrade entire server even if only one component is slow | Horizontal scaling: Scale frontend and backend independently based on demand |
 | **Cost** | Pay for a machine. Depends on what types of EC2 in use, the cost varies: consult AWS EC2 price [here](https://aws.amazon.com/ec2/pricing/)  | Cost for a machine + [S3](https://aws.amazon.com/s3/pricing/) + [CloudFront](https://aws.amazon.com/cloudfront/pricing/) |
 | **Performance** | Slower for global users + Single geographic location | Faster globally + CDN edge locations worldwide |
 | **Maintenance** | Simpler setup: One server to manage | More complex: Multiple services to configure and monitor |
-| **Security** | Higher risk: if frontend is compromised, the attacker has local access to the backend | Better isolation - Your business logic is better secured in a <strong>Private Subnet</strong> |
+| **Security** | Higher risk: if frontend is compromised, the attacker has local access to the backend | Better isolation - Your business logic is better secured in a Private Subnet |
 
 Now let's dive into each consideration!
 
