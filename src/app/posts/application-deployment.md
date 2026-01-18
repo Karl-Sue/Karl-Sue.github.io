@@ -81,7 +81,7 @@ When using this method, I think developers should pay extra attention to securit
 
 ## Some final thoughts
 
-Depending on what the requirements are - finance, needs, definition of a satisfactory system, etc., we can decide which system is <strong>the most suitable</strong> for our organisations. I write this post to share my learning journey to become a great Software Engineer | DevOps. I will continue to post my thoughts and learning experiences on my site and LinkedIn to connect with more like-minded people and learn interesting knowledge from them. If you find anything in this post is unclear, incorrect, or maybe you just want to chat with me, please don't hesitate to connect and find my contact at this [link](https://karl-sue.github.io/contact)
+Depending on what the requirements are - finance, needs, definition of a satisfactory system, etc., we can decide which system is the most suitable for our organisations. I write this post to share my learning journey to become a great Software Engineer | DevOps. I will continue to post my thoughts and learning experiences on my site and LinkedIn to connect with more like-minded people and learn interesting knowledge from them. If you find anything in this post is unclear, incorrect, or maybe you just want to chat with me, please don't hesitate to connect and find my contact at this [link](https://karl-sue.github.io/contact)
 
 ## Next topic
 
