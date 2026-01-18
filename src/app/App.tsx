@@ -15,9 +15,12 @@ function AppContent() {
   useEffect(() => {
     // Handle redirect from 404.html
     const redirect = sessionStorage.getItem('redirect');
-    if (redirect && redirect !== '/') {
+    if (redirect) {
       sessionStorage.removeItem('redirect');
-      navigate(redirect, { replace: true });
+      // Give React Router time to initialize, then navigate
+      setTimeout(() => {
+        navigate(redirect, { replace: true });
+      }, 0);
     }
   }, [navigate]);
 
@@ -25,8 +28,8 @@ function AppContent() {
     <div className="min-h-screen bg-white">
       <Navigation />
       <Routes>
-          <Route path="/" element={<AboutPage />} />
-          <Route path="/experience" element={<ExperiencePage />} />
+        <Route path="/" element={<AboutPage />} />
+        <Route path="/experience" element={<ExperiencePage />} />
         <Route path="/projects" element={<ProjectsPage />} />
         <Route path="/blog" element={<BlogPage />} />
         <Route path="/blog/:postId" element={<PostDetailPage />} />

@@ -4,10 +4,11 @@
     <meta charset="utf-8" />
     <title>Redirecting...</title>
     <script>
-      // Save the path user tried to access
-      sessionStorage.setItem('redirect', window.location.pathname);
-      // Redirect to home page
-      window.location.replace('/');
+      // Save the full path and search params
+      var path = window.location.pathname + window.location.search + window.location.hash;
+      sessionStorage.setItem('redirect', path);
+      // Redirect to home page (root of the domain)
+      window.location.replace(window.location.origin);
     </script>
   </head>
   <body>
