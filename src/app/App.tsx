@@ -7,8 +7,18 @@ import { BlogPage } from "./pages/BlogPage";
 import { PostDetailPage } from "./pages/PostDetailPage";
 import { EducationPage } from "./pages/EducationPage";
 import { ContactPage } from "./pages/ContactPage";
+import { useEffect } from "react";
 
 export default function App() {
+  useEffect(() => {
+    // Handle redirect from 404.html
+    const redirect = sessionStorage.getItem('redirect');
+    if (redirect && redirect !== '/') {
+      sessionStorage.removeItem('redirect');
+      window.history.replaceState(null, '', redirect);
+    }
+  }, []);
+
   return (
     <BrowserRouter>
       <div className="min-h-screen bg-white">
