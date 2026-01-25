@@ -11,6 +11,15 @@ export interface Post {
 
 export const initialPosts: Post[] = [
   {
+    id: "system-design",
+    title: "Construct an AWS architecture for a scalable application",
+    excerpt: "Building a reliable, scalable, and secure AWS architecture. This detailed walkthrough covers VPC networking, public/private subnets, frontend hosting with S3 & CloudFront, and backend scaling with EC2 & ALB.",
+    category: "Full Stack",
+    tags: ["AWS", "System Design", "Cloud Architecture", "VPC", "EC2", "S3", "CloudFront", "Security"],
+    date: "2026-01-25",
+    readTime: "10 min",
+  },
+  {
     id: "application-deployment",
     title: "Deploy application to Cloud - Should we run whole app on 1 machine or separate it?",
     excerpt: "A deep dive into the decision matrix for deploying applications on AWS EC2: single machine vs. separate machines for frontend and backend, exploring scaling, cost, performance, and security considerations.",
