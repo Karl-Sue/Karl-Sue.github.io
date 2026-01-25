@@ -8,7 +8,7 @@ After last week's topic, I have been so excited to build a system to see how dif
 
 ## The architecture
 
-![AWS System Architecture Diagram](../../../public/AWS_deployment.png)
+![AWS System Architecture Diagram](/AWS_deployment.png)
 
 ### Register your app domain name
 
