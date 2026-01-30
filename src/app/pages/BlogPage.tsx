@@ -126,11 +126,19 @@ export function BlogPage() {
                       </span>
                     </div>
 
-                    <h2 className="font-serif text-xl font-bold group-hover:text-blue-600 transition-colors">
+                    <h2
+                      className="group-hover:text-blue-600 transition-colors"
+                      style={{ fontFamily: "Georgia, serif", fontWeight: "bold", fontSize: "1.55rem" }}
+                    >
                       {post.title}
                     </h2>
 
-                    <p className="text-lg text-gray-700 leading-relaxed">{post.excerpt}</p>
+                    <p
+                      className="text-lg text-gray-700 leading-relaxed"
+                      style={{ fontFamily: "'Lora', Georgia, serif", fontSize: "1rem" }}
+                    >
+                      {post.excerpt}
+                    </p>
 
                     <div className="flex flex-wrap gap-2">
                       {post.tags.map((tag, idx) => (
