@@ -40,6 +40,11 @@ export function PostDetailPage() {
     loadPost();
   }, [postId, post]);
 
+  // Scroll to top when postId changes
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [postId]);
+
   if (!post) {
     return (
       <div className="py-12 bg-gray-50 min-h-screen">

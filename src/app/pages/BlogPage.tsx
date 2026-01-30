@@ -108,9 +108,9 @@ export function BlogPage() {
         </div>
 
         {/* Posts Grid */}
-        <div className="space-y-16">
+        <div className="space-y-3">
           {filteredPosts.map((post) => (
-            <Link key={post.id} to={`/blog/${post.id}`}>
+            <Link key={post.id} to={`/blog/${post.id}`} className="block">
               <Card className="p-6 hover:shadow-lg transition-shadow cursor-pointer">
                 <div className="flex flex-col md:flex-row md:items-start gap-4">
                   <div className="flex-1">
