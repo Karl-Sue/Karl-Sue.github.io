@@ -33,14 +33,14 @@ export function BlogPage() {
       <div className="max-w-5xl mx-auto px-6">
         {/* Introduction Section */}
         <div className="mb-12">
-          <h1 className="text-4xl mb-4">Blog & Learning Journey</h1>
+          <h1 className="font-serif text-5xl font-bold mb-8 text-gray-900">Blog</h1>
           <Card className="p-6 bg-gradient-to-r from-blue-50 to-indigo-50 border-blue-200">
             <p className="text-lg text-gray-700 leading-relaxed mb-3">
               Welcome to my digital garden 🌱 where I document my journey as a
               software developer. Here, I share insights on web development,
               cloud architecture, and my continuous learning adventures.
             </p>
-            <p className="text-gray-600">
+            <p className="text-lg text-gray-700 leading-relaxed mb-3">
               From deep technical dives to reflections on learning new
               technologies, this space captures my experiences building scalable
               applications and exploring the ever-evolving landscape of software
@@ -126,11 +126,11 @@ export function BlogPage() {
                       </span>
                     </div>
 
-                    <h2 className="text-2xl mb-3 text-gray-900 hover:text-blue-600 transition-colors">
+                    <h2 className="font-serif text-xl font-bold group-hover:text-blue-600 transition-colors">
                       {post.title}
                     </h2>
 
-                    <p className="text-gray-600 mb-4">{post.excerpt}</p>
+                    <p className="text-lg text-gray-700 leading-relaxed">{post.excerpt}</p>
 
                     <div className="flex flex-wrap gap-2">
                       {post.tags.map((tag, idx) => (

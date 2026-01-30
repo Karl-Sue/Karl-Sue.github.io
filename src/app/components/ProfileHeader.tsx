@@ -35,8 +35,8 @@ export function ProfileHeader({
           </div>
 
           <div className="flex-1 text-center md:text-left">
-            <h1 className="text-4xl mb-2">{name}</h1>
-            <p className="text-xl text-gray-700 mb-4">{title}</p>
+            <h1 className="font-serif text-4xl font-bold mb-2">{name}</h1>
+            <p className="text-xl text-gray-700 font-light mb-4">{title}</p>
 
             <div className="flex flex-wrap gap-4 justify-center md:justify-start text-sm text-gray-600">
               <div className="flex items-center gap-2">

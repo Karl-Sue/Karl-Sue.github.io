@@ -40,8 +40,8 @@ export function EducationPage() {
     <div className="py-12 bg-gray-50 min-h-screen">
       <div className="max-w-5xl mx-auto px-6">
         <div className="mb-8">
-          <h1 className="text-4xl mb-2">Education & Certifications</h1>
-          <p className="text-gray-600">
+          <h1 className="font-serif text-5xl font-bold mb-8 text-gray-900">Education</h1>
+          <p className="text-lg text-gray-700 leading-relaxed">
             My academic background and professional certifications
           </p>
         </div>

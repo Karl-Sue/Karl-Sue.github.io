@@ -17,7 +17,7 @@ export function ExperienceSection({ experiences }: ExperienceSectionProps) {
   return (
     <section className="py-12">
       <div className="max-w-5xl mx-auto px-6">
-        <h2 className="text-3xl mb-6">Work Experience</h2>
+        <h2 className="font-serif text-3xl font-bold mb-8 text-gray-900">Experience</h2>
         <div className="space-y-6">
           {experiences.map((exp, idx) => (
             <Card key={idx} className="p-6">
@@ -29,10 +29,10 @@ export function ExperienceSection({ experiences }: ExperienceSectionProps) {
                 </div>
                 <div className="flex-1">
                   <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-2">
-                    <h3 className="text-xl text-gray-900">{exp.position}</h3>
+                    <h3 className="font-serif text-xl font-bold">{exp.position}</h3>
                     <span className="text-sm text-gray-500">{exp.period}</span>
                   </div>
-                  <p className="text-blue-600 mb-3">{exp.company}</p>
+                  <p className="text-lg text-gray-700 leading-relaxed">{exp.company}</p>
                   <p className="text-gray-700 mb-3">{exp.description}</p>
                   {exp.achievements && exp.achievements.length > 0 && (
                     <ul className="list-disc list-inside space-y-1 text-gray-600">

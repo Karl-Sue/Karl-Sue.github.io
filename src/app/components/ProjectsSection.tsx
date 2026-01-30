@@ -19,7 +19,9 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
   return (
     <section className="py-12 bg-gray-50">
       <div className="max-w-5xl mx-auto px-6">
-        <h2 className="text-3xl mb-6">Featured Projects</h2>
+        <h2 className="font-serif text-3xl font-bold mb-8 text-gray-900">
+          Featured Projects
+        </h2>
         <div className="grid md:grid-cols-2 gap-6">
           {projects.map((project, idx) => (
             <Card key={idx} className="overflow-hidden hover:shadow-lg transition-shadow">
@@ -31,8 +33,10 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
                 />
               )}
               <div className="p-6">
-                <h3 className="text-xl mb-2 text-gray-900">{project.title}</h3>
-                <p className="text-gray-600 mb-4">{project.description}</p>
+                <h3 className="font-serif text-xl font-bold">{project.title}</h3>
+                <p className="text-lg text-gray-700 leading-relaxed mb-4">
+                  {project.description}
+                </p>
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.technologies.map((tech, techIdx) => (
                     <Badge key={techIdx} variant="secondary">

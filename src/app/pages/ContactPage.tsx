@@ -14,8 +14,10 @@ export function ContactPage() {
     <div className="py-12 bg-gray-50 min-h-screen">
       <div className="max-w-3xl mx-auto px-6">
         <div className="mb-8 text-center">
-          <h1 className="text-4xl mb-2">Get In Touch</h1>
-          <p className="text-gray-600">
+          <h1 className="font-serif text-5xl font-bold mb-6 text-gray-900">
+            Get In Touch
+          </h1>
+          <p className="text-lg text-gray-700 mb-12 leading-relaxed">
             Feel free to reach out for collaborations or just a friendly hello
           </p>
         </div>
@@ -96,7 +98,9 @@ export function ContactPage() {
         </div>
 
         <Card className="p-8">
-          <h2 className="text-2xl mb-6 text-center">Connect with me on social media</h2>
+          <h2 className="font-serif text-3xl font-bold mb-8 text-gray-900">
+            Contact Information
+          </h2>
           <div className="flex justify-center gap-4">
             <a
               href={contactInfo.linkedIn}

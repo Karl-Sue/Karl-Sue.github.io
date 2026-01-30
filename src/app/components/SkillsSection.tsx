@@ -34,11 +34,15 @@ export function SkillsSection({ skillCategories }: SkillsSectionProps) {
   return (
     <section className="py-12 bg-gray-50">
       <div className="max-w-5xl mx-auto px-6">
-        <h2 className="text-3xl mb-6">Skills & Expertise</h2>
+        <h2 className="font-serif text-3xl font-bold mb-8 text-gray-900">
+          Skills & Technologies
+        </h2>
         <div className="grid md:grid-cols-2 gap-6">
           {skillCategories.map((category, idx) => (
             <Card key={idx} className="p-6">
-              <h3 className="text-xl mb-4 text-gray-900">{category.category}</h3>
+              <h3 className="font-serif text-xl font-semibold mb-3 text-gray-900">
+                {category.category}
+              </h3>
               <div className="flex flex-wrap gap-2">
                 {category.skills.map((skill, skillIdx) => (
                   <Badge

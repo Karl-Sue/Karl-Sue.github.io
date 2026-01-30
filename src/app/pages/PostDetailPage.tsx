@@ -85,7 +85,9 @@ export function PostDetailPage() {
             </span>
           </div>
 
-          <h1 className="text-4xl mb-4">{post.title}</h1>
+          <h1 className="font-serif text-4xl font-bold mb-4 text-gray-900">
+            {post.title}
+          </h1>
 
           <div className="flex flex-wrap gap-2">
             {post.tags.map((tag, idx) => (
@@ -107,7 +109,7 @@ export function PostDetailPage() {
               <p className="text-gray-600">Loading post...</p>
             </div>
           ) : (
-            <article className="prose prose-lg max-w-none">
+            <article className="prose prose-lg max-w-none prose-headings:font-serif prose-h1:text-4xl prose-h1:font-bold prose-h2:text-3xl prose-h2:font-bold prose-h3:text-xl prose-h3:font-bold prose-p:text-lg prose-p:leading-relaxed prose-p:text-gray-700">
               <ReactMarkdown remarkPlugins={[remarkGfm]}>
                 {content}
               </ReactMarkdown>

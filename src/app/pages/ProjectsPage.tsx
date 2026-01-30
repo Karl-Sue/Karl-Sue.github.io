@@ -31,8 +31,8 @@ export function ProjectsPage() {
     <div className="py-12 min-h-screen">
       <div className="max-w-5xl mx-auto px-6">
         <div className="mb-8">
-          <h1 className="text-4xl mb-2">Featured Projects</h1>
-          <p className="text-gray-600">
+          <h1 className="font-serif text-5xl font-bold mb-8 text-gray-900">Projects</h1>
+          <p className="text-lg text-gray-700 leading-relaxed">
             A showcase of my recent work and open source contributions
           </p>
         </div>
