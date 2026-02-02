@@ -15,7 +15,7 @@ export const initialPosts: Post[] = [
     title: "Update A Personal Page With AWS Serverless Setup",
     excerpt: "Exploring the transition from a static GitHub-hosted site to an AWS serverless architecture using Lambda and DynamoDB. Learn how to add dynamic functionality like page view tracking to a static website.",
     category: "Full Stack",
-    tags: ["AWS", "Serverless", "Lambda", "DynamoDB", "GitHub Pages", "Architecture"],
+    tags: ["AWS", "Serverless", "Lambda", "DynamoDB", "GitHub Pages", "CloudFront", "S3", "CI/CD", "API Gateway"],
     date: "2026-02-01",
     readTime: "5 min",
   },
