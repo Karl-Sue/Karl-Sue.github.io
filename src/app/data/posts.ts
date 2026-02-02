@@ -11,6 +11,15 @@ export interface Post {
 
 export const initialPosts: Post[] = [
   {
+    id: "personal-app",
+    title: "Update A Personal Page With AWS Serverless Setup",
+    excerpt: "Exploring the transition from a static GitHub-hosted site to an AWS serverless architecture using Lambda and DynamoDB. Learn how to add dynamic functionality like page view tracking to a static website.",
+    category: "Full Stack",
+    tags: ["AWS", "Serverless", "Lambda", "DynamoDB", "GitHub Pages", "Architecture"],
+    date: "2026-02-01",
+    readTime: "5 min",
+  },
+  {
     id: "system-design",
     title: "Construct an AWS architecture for a scalable application",
     excerpt: "Building a reliable, scalable, and secure AWS architecture. This detailed walkthrough covers VPC networking, public/private subnets, frontend hosting with S3 & CloudFront, and backend scaling with EC2 & ALB.",
