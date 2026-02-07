@@ -11,6 +11,15 @@ export interface Post {
 
 export const initialPosts: Post[] = [
   {
+    id: "ticket_system",
+    title: "How SQS and SNS help a business decouple its architecture",
+    excerpt: "Exploring how high-traffic systems like ticketing platforms use AWS SNS and SQS decoupling patterns to handle millions of requests without crashing. A look at synchronous vs asynchronous architecture and idempotency.",
+    category: "Full Stack",
+    tags: ["AWS", "System Design", "SQS", "SNS", "Microservices", "Cloud Architecture", "Redis", "DynamoDB"],
+    date: "2026-02-07",
+    readTime: "8 min",
+  },
+  {
     id: "personal-app",
     title: "Update A Personal Page With AWS Serverless Setup",
     excerpt: "Exploring the transition from a static GitHub-hosted site to an AWS serverless architecture using Lambda and DynamoDB. Learn how to add dynamic functionality like page view tracking to a static website.",
