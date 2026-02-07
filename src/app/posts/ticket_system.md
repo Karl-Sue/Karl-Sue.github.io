@@ -1,8 +1,6 @@
-# How SQS and SNS help a business decouple its architecture
+# The inspiration
 
-# Integration
-
-While I was talking with my girlfriend, I was impressed by how fast tickets for a K-pop celebrity can sell out—2 to 3 minutes and that's it! It made me wonder: what kind of system can handle millions of requests in just 2 or 3 minutes without crashing? This is where SQS and SNS help. Not only do ticketing platforms use this architecture, but high-traffic websites such as Amazon, eBay, and Temu also rely on similar designs. This week, I focus on a ticketing system to see how it works (it's quite similar to e-commerce platforms).
+While I was talking with my girlfriend, I was impressed by how fast tickets for a K-pop celebrity can sell out - 2 to 3 minutes and that's it! It made me wonder: what kind of system can handle millions of requests in just 2 or 3 minutes without crashing? This is where SQS and SNS help. Not only do ticketing platforms use this architecture, but high-traffic websites such as Amazon, eBay, and Temu also rely on similar designs. This week, I focus on a ticketing system to see how it works (it's quite similar to e-commerce platforms).
 
 *Note: This week's content is supported by knowledge from Gemini.*
 
@@ -14,7 +12,7 @@ Before decoupling, the application had to handle requests by calling each servic
 
 ![Synchronous System](/sync.png)
 
-Whenever a customer places a ticket order, the `Order Service` handles the request by running each step in sequence. First, it calls `Payment` and waits for the response, then calls `Seat Locking` and waits again, and finally reaches the `Email` service so the customer receives a confirmation email. This system works fine until an unexpected spike of traffic hits the application—like when a G-Dragon show opens for sale. Here, the problem becomes clearer. The ticket market is a tough environment where everyone competes for a chance to see their favorite artist. With extremely high traffic, the whole system cannot afford to wait for every small service to finish its task. Even worse, if a request is complicated or a small error occurs, the ticket booking system can go down and customer dissatisfaction increases.
+Whenever a customer places a ticket order, the `Order Service` handles the request by running each step in sequence. First, it calls `Payment` and waits for the response, then calls `Seat Locking` and waits again, and finally reaches the `Email` service so the customer receives a confirmation email. This system works fine until an unexpected spike of traffic hits the application - like when a G-Dragon show opens for sale. Here, the problem becomes clearer. The ticket market is a tough environment where everyone competes for a chance to see their favorite artist. With extremely high traffic, the whole system cannot afford to wait for every small service to finish its task. Even worse, if a request is complicated or a small error occurs, the ticket booking system can go down and customer dissatisfaction increases.
 
 ## Asynchronous
 
@@ -47,7 +45,7 @@ To ensure that a request is truly "poisoned," we should set a minimum number of 
 
 ![DynamoDB](/db.png)
 
-For each service, there are multiple machines in a distributed system, which means several workers process requests at the same time. The problem with SQS is the `visibility timeout`, which can make the system misbehave. Visibility timeout is the amount of time that SQS hides a message already pulled by a worker. If a server (server A) does not send a delete request on success to that SQS queue, the queue assumes that server failed and makes the message visible to other servers. When another server (server B) sees that message, it pulls and processes the request. This is not a problem if server A actually failed, but sometimes it just needs more time to handle a complicated message. Consequently, an action can happen twice—users can be charged twice, seats can be double-booked, or two emails can be sent. Therefore, DynamoDB acts as a coordinator in this case. Whenever a message is pulled for the first time, the server immediately writes the request details to DynamoDB, including `id`, `status`, etc. Even if the message becomes visible again and another server pulls it, that server checks DynamoDB to see if the request was already processed. As a result, this setup ensures idempotency in the system design and avoids duplication.
+For each service, there are multiple machines in a distributed system, which means several workers process requests at the same time. The problem with SQS is the `visibility timeout`, which can make the system misbehave. Visibility timeout is the amount of time that SQS hides a message already pulled by a worker. If a server (server A) does not send a delete request on success to that SQS queue, the queue assumes that server failed and makes the message visible to other servers. When another server (server B) sees that message, it pulls and processes the request. This is not a problem if server A actually failed, but sometimes it just needs more time to handle a complicated message. Consequently, an action can happen twice - users can be charged twice, seats can be double-booked, or two emails can be sent. Therefore, DynamoDB acts as a coordinator in this case. Whenever a message is pulled for the first time, the server immediately writes the request details to DynamoDB, including `id`, `status`, etc. Even if the message becomes visible again and another server pulls it, that server checks DynamoDB to see if the request was already processed. As a result, this setup ensures idempotency in the system design and avoids duplication.
 
 # Final thoughts
 
