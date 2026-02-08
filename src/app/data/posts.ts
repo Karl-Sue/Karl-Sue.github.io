@@ -16,7 +16,7 @@ export const initialPosts: Post[] = [
     excerpt: "Exploring how high-traffic systems like ticketing platforms use AWS SNS and SQS decoupling patterns to handle millions of requests without crashing. A look at synchronous vs asynchronous architecture and idempotency.",
     category: "Full Stack",
     tags: ["AWS", "System Design", "SQS", "SNS", "Microservices", "Cloud Architecture", "Redis", "DynamoDB"],
-    date: "2026-02-07",
+    date: "2026-02-08",
     readTime: "8 min",
   },
   {
