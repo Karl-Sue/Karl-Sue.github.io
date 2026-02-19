@@ -1,11 +1,17 @@
+# Karl Hoang's Personal Portfolio
 
-  # Professional Profile Page
+A personal portfolio website built to showcase my projects, experience, and blog posts.
 
-  This is a code bundle for Professional Profile Page. The original project is available at https://www.figma.com/design/A7HdccAMntKqt1MHfTn4QY/Professional-Profile-Page.
+## Getting Started
 
-  ## Running the code
+To run the project locally:
 
-  Run `npm i` to install the dependencies.
+1. Install dependencies:
+  ```bash
+  npm install
+  ```
 
-  Run `npm run dev` to start the development server.
-  
+2. Start the development server:
+  ```bash
+  npm run dev
+  ```
