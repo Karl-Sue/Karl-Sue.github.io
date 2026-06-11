@@ -36,6 +36,8 @@ const certifications = [
     issuer: "Amazon Web Services",
     date: "2025 - 2028",
     logo: "/AWS badge.png",
+    verification_id: "c2857a05245f4b8099fec51b17cf6e16",
+    url: "https://cp.certmetrics.com/amazon/en/public/verify/credential/c2857a05245f4b8099fec51b17cf6e16",
   }
 ];
 
@@ -73,7 +75,20 @@ export function EducationPage() {
                   </div>
                   <div className="flex-1">
                     <h3 className="text-lg font-semibold text-gray-900 mb-1">{cert.name}</h3>
-                    <p className="text-sm text-gray-600 mb-2">{cert.issuer}</p>
+                    <p className="text-sm text-gray-600 mb-1">{cert.issuer}</p>
+                    {cert.verification_id && (
+                      <p className="text-xs text-gray-500 mb-3 font-mono">
+                        Credential ID:{" "}
+                        <a 
+                          href={cert.url} 
+                          target="_blank" 
+                          rel="noopener noreferrer" 
+                          className="text-blue-600 hover:text-blue-700 hover:underline select-all font-medium"
+                        >
+                          {cert.verification_id}
+                        </a>
+                      </p>
+                    )}
                     <Badge variant="secondary">{cert.date}</Badge>
                   </div>
                 </div>
