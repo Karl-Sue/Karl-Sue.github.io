@@ -11,10 +11,7 @@ const profileData = {
   linkedIn: "https://www.linkedin.com/in/tuan-khanh-hoang-1a8a9b275/",
   github: "https://github.com/Karl-Sue",
   imageUrl: "/profile.jpg",
-  bio: `I am a Software Engineering student at UWA with a strong interest in cloud computing and DevOps. 
-        I enjoy building cloud-native and backend applications, have hands-on experience with AWS (Lambda, DynamoDB, IAM, CloudWatch, CI/CD), and am an AWS Certified Developer – Associate. 
-        My current focus is on Golang and Python, backend development, automation, and cloud-native system design. 
-        I am seeking junior software engineering or DevOps-focused roles to grow my expertise and contribute to real-world production systems.`,
+  bio: `I am a Software Engineering student at the University of Western Australia (UWA) with a focus on backend development, cloud-native architectures, and DevOps. As an AWS Certified Developer – Associate, I have practical experience designing cloud solutions utilizing Lambda, DynamoDB, IAM, and CloudWatch, along with CI/CD integration. Recently, I have also developed hands-on proficiency with Microsoft Azure through enterprise-focused academic projects, working with Logic Apps, Azure App Service, and Azure Static Web Apps. Passionate about Golang, Python, automation, and distributed systems, I am seeking opportunities to contribute to real-world production pipelines and scalable backend infrastructure.`,
 };
 
 const skillCategories = [
@@ -34,7 +31,6 @@ const skillCategories = [
       { name: "Python", level: "Intermediate" as const },
       { name: "Golang", level: "Beginner" as const },
       { name: "C#", level: "Beginner" as const },
-      { name: "Golang", level: "Beginner" as const },
       { name: "PostgreSQL", level: "Beginner" as const },
       { name: "MongoDB", level: "Beginner" as const },
       { name: "MySQL", level: "Intermediate" as const },
@@ -43,10 +39,12 @@ const skillCategories = [
   {
     category: "Cloud & DevOps",
     skills: [
-      { name: "AWS", level: "Beginner" as const },
+      { name: "AWS", level: "Intermediate" as const },
       { name: "Docker", level: "Intermediate" as const },
       { name: "Kubernetes", level: "Beginner" as const },
       { name: "CI/CD", level: "Beginner" as const },
+      { name: "Git Actions", level: "Intermediate" as const },
+      { name: "Azure", level: "Beginner" as const },
     ],
   },
   {

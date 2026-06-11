@@ -10,6 +10,7 @@ const education = [
     field: "Software System",
     period: "Jul 2024 - Jul 2026",
     description: "GPA: 6.25/7",
+    logo: "/UWA logo.png",
   },
   {
     school: "Macquarie University",
@@ -17,6 +18,7 @@ const education = [
     field: "International Business",
     period: "Jul 2023 - Jul 2024",
     description: "WAM: 74.375/100",
+    logo: "/MQ logo.png",
   },
   {
     school: "International School of Business",
@@ -24,6 +26,7 @@ const education = [
     field: "International Business",
     period: "Jul 2021 - Jul 2023",
     description: "GPA: 3.5/4.0",
+    logo: "/ISB logo.png",
   },
 ];
 
@@ -32,6 +35,7 @@ const certifications = [
     name: "AWS Certified Developer - Associate",
     issuer: "Amazon Web Services",
     date: "2025 - 2028",
+    logo: "/AWS badge.png",
   }
 ];
 
@@ -49,18 +53,26 @@ export function EducationPage() {
         <EducationSection education={education} />
 
         <div className="mt-12">
-          <h2 className="text-3xl mb-6">Certifications</h2>
+          <h2 className="text-3xl mb-6 font-serif font-bold text-gray-900">Certifications</h2>
           <div className="grid md:grid-cols-2 gap-4">
             {certifications.map((cert, idx) => (
               <Card key={idx} className="p-6">
                 <div className="flex gap-4">
                   <div className="flex-shrink-0">
-                    <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-                      <Award className="w-6 h-6 text-green-600" />
+                    <div className="w-12 h-12 bg-white rounded-lg border border-gray-100 flex items-center justify-center overflow-hidden">
+                      {cert.logo ? (
+                        <img 
+                          src={cert.logo} 
+                          alt={cert.issuer} 
+                          className="w-full h-full object-contain p-1"
+                        />
+                      ) : (
+                        <Award className="w-6 h-6 text-green-600" />
+                      )}
                     </div>
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-lg text-gray-900 mb-1">{cert.name}</h3>
+                    <h3 className="text-lg font-semibold text-gray-900 mb-1">{cert.name}</h3>
                     <p className="text-sm text-gray-600 mb-2">{cert.issuer}</p>
                     <Badge variant="secondary">{cert.date}</Badge>
                   </div>

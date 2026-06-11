@@ -15,6 +15,45 @@ interface SkillsSectionProps {
   skillCategories: SkillCategory[];
 }
 
+const getIconUrl = (tech: string) => {
+  const mapping: Record<string, string> = {
+    "react": "react",
+    "typescript": "typescript",
+    "next.js": "nextdotjs",
+    "nextjs": "nextdotjs",
+    "tailwind css": "tailwindcss",
+    "tailwindcss": "tailwindcss",
+    "node.js": "nodedotjs",
+    "nodejs": "nodedotjs",
+    "python": "python",
+    "golang": "go",
+    "go": "go",
+    "c#": "csharp",
+    "csharp": "csharp",
+    "postgresql": "postgresql",
+    "postgres": "postgresql",
+    "mongodb": "mongodb",
+    "mysql": "mysql",
+    "aws": "amazonwebservices",
+    "amazon web services": "amazonwebservices",
+    "docker": "docker",
+    "kubernetes": "kubernetes",
+    "git actions": "githubactions",
+    "gitaction": "githubactions",
+    "github actions": "githubactions",
+    "azure": "microsoftazure",
+    "microsoft azure": "microsoftazure",
+    "git": "git",
+    "figma": "figma",
+    "jest": "jest",
+    "cypress": "cypress"
+  };
+  
+  const slug = mapping[tech.toLowerCase().trim()];
+  if (!slug) return null;
+  return `https://cdn.simpleicons.org/${slug}`;
+};
+
 export function SkillsSection({ skillCategories }: SkillsSectionProps) {
   const getLevelColor = (level?: string) => {
     switch (level) {
@@ -44,20 +83,33 @@ export function SkillsSection({ skillCategories }: SkillsSectionProps) {
                 {category.category}
               </h3>
               <div className="flex flex-wrap gap-2">
-                {category.skills.map((skill, skillIdx) => (
-                  <Badge
-                    key={skillIdx}
-                    variant="outline"
-                    className={getLevelColor(skill.level)}
-                  >
-                    {skill.name}
-                    {skill.level && (
-                      <span className="ml-1 text-xs opacity-75">
-                        ({skill.level})
-                      </span>
-                    )}
-                  </Badge>
-                ))}
+                {category.skills.map((skill, skillIdx) => {
+                  const iconUrl = getIconUrl(skill.name);
+                  return (
+                    <Badge
+                      key={skillIdx}
+                      variant="outline"
+                      className={`inline-flex items-center gap-1.5 ${getLevelColor(skill.level)}`}
+                    >
+                      {iconUrl && (
+                        <img 
+                          src={iconUrl} 
+                          alt={skill.name} 
+                          className="w-3.5 h-3.5 object-contain"
+                          onError={(e) => {
+                            (e.currentTarget as HTMLImageElement).style.display = 'none';
+                          }}
+                        />
+                      )}
+                      {skill.name}
+                      {skill.level && (
+                        <span className="ml-1 text-xs opacity-75">
+                          ({skill.level})
+                        </span>
+                      )}
+                    </Badge>
+                  );
+                })}
               </div>
             </Card>
           ))}
