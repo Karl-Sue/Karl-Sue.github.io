@@ -1,15 +1,6 @@
 import { Mail, MapPin, Phone, Linkedin, Github } from "lucide-react";
 
-interface ProfileHeaderProps {
-  name: string;
-  title: string;
-  location: string;
-  email: string;
-  phone: string;
-  linkedIn?: string;
-  github?: string;
-  imageUrl: string;
-}
+import { ProfileHeaderProps } from '../types';
 
 export function ProfileHeader({
   name,

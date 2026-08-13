@@ -2,26 +2,7 @@ import { Briefcase } from "lucide-react";
 import { Badge } from "./ui/badge";
 import { Card } from "./ui/card";
 
-interface Role {
-  position: string;
-  startDate: string; // YYYY-MM
-  endDate: string;   // YYYY-MM or "present"
-  type?: string;
-  location?: string;
-  description?: string;
-  achievements?: string[];
-  skills?: string[];
-}
-
-interface Experience {
-  company: string;
-  locationType?: string;
-  roles: Role[];
-}
-
-interface ExperienceSectionProps {
-  experiences: Experience[];
-}
+import { Role, ExperienceSectionProps } from '../types';
 
 const parseYearMonth = (str: string): Date => {
   if (str.toLowerCase() === "present") {

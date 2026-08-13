@@ -1,5 +1,5 @@
 import { connectToDatabase } from './db';
-import { Env } from '../types';
+import { Env, PostAnalyticsDoc } from '../types';
 import { hash62 } from './hash';
 
 const corsHeaders = {
@@ -53,7 +53,8 @@ export default {
         const now = new Date();
 
         // Increment count in MongoDB using hashed id as key
-        const collection = db.collection('post_analytics');
+        const collection = db.collection<PostAnalyticsDoc>('post_analytics');
+
 
         const result = await collection.findOneAndUpdate(
           { _id: hashedId },
@@ -75,7 +76,9 @@ export default {
 
 
         // Extract document gracefully across driver versions
-        const doc = (result && 'value' in result && result.value) ? result.value : result;
+        const doc = (result && 'value' in result && result.value) 
+          ? (result.value as PostAnalyticsDoc | null) 
+          : (result as PostAnalyticsDoc | null);
         const currentCount = doc?.count ?? 1;
 
         return new Response(

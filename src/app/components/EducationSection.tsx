@@ -1,14 +1,7 @@
 import { GraduationCap } from "lucide-react";
 import { Card } from "./ui/card";
 
-interface Education {
-  school: string;
-  degree: string;
-  field: string;
-  period: string;
-  description?: string;
-  logo?: string;
-}
+import { Education } from '../types';
 
 interface EducationSectionProps {
   education: Education[];

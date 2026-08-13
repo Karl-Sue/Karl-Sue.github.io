@@ -1,18 +1,7 @@
 import { ExternalLink, Github } from "lucide-react";
 import { Badge } from "./ui/badge";
 
-interface Project {
-  title: string;
-  description: string;
-  technologies: string[];
-  link?: string;
-  github?: string;
-  image?: string;
-}
-
-interface ProjectsSectionProps {
-  projects: Project[];
-}
+import { ProjectsSectionProps } from '../types';
 
 const getIconUrl = (tech: string) => {
   const mapping: Record<string, string> = {

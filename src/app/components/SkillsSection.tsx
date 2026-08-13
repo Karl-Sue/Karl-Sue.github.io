@@ -1,19 +1,7 @@
 import { Badge } from "./ui/badge";
 import { Card } from "./ui/card";
 
-interface Skill {
-  name: string;
-  level?: "Beginner" | "Intermediate" | "Advanced" | "Expert";
-}
-
-interface SkillCategory {
-  category: string;
-  skills: Skill[];
-}
-
-interface SkillsSectionProps {
-  skillCategories: SkillCategory[];
-}
+import { SkillsSectionProps } from '../types';
 
 const getIconUrl = (tech: string) => {
   const mapping: Record<string, string> = {
