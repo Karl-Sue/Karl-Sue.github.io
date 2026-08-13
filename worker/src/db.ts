@@ -1,9 +1,6 @@
 import { MongoClient, Db } from 'mongodb';
+import { Env } from '../types';
 
-export interface Env {
-    MONGO_URI: string;
-    DB_NAME?: string;
-}
 
 // Cached client instance
 let cachedClient: MongoClient | null = null;
