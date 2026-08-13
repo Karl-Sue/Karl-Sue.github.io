@@ -39,3 +39,7 @@ lerna-debug.log*
 Thumbs.db
 
 check-unused-components.js
+.venv/
+.agent/
+*.env
+.wrangler/
