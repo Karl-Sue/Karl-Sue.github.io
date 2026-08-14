@@ -1,11 +1,12 @@
 import { connectToDatabase } from './db';
 import { Env, PostAnalyticsDoc } from '../types';
 import { hash62 } from './hash';
+import { validateApiKey } from './security';
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
-  'Access-Control-Allow-Headers': 'Content-Type',
+  'Access-Control-Allow-Headers': 'Content-Type, x-api-key, Authorization',
 };
 
 export default {
@@ -25,6 +26,14 @@ export default {
     }
 
     try {
+      const isValidApi = await validateApiKey(request, env);
+      if (!isValidApi) {
+        return new Response(
+          JSON.stringify({ status: 'error', message: 'Unauthorized: Invalid API key' }),
+          { status: 401, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        );
+      }
+
       const db = await connectToDatabase(env);
 
       // Route: Increment view count for post (/api/views/increment) or profile (/api/profile/views)

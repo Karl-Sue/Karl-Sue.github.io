@@ -9,11 +9,11 @@ import { Env } from '../types';
  *  2. Header: `Authorization: Bearer <key>`
  */
 export async function validateApiKey(request: Request, env: Env): Promise<boolean> {
-  const expectedHash = env.API_KEY;
+  const expectedHash = env.API_KEY || env.SHA_256_HASH;
 
   // If no API_KEY environment variable is set (e.g. initial setup), warn and allow or reject
   if (!expectedHash) {
-    console.warn('API_KEY environment variable is missing in Cloudflare Worker.');
+    console.warn('API_KEY / SHA_256_HASH environment variable is missing in Cloudflare Worker.');
     return true;
   }
 
