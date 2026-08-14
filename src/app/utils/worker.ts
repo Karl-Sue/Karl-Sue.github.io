@@ -1,14 +1,24 @@
+const WORKER_URL = import.meta.env.VITE_WORKER_URL || 'http://localhost:8787';
+const API_KEY = import.meta.env.VITE_API_KEY || '';
+
+function getHeaders(): Record<string, string> {
+  const headers: Record<string, string> = {
+    'Content-Type': 'application/json',
+  };
+  if (API_KEY) {
+    headers['x-api-key'] = API_KEY;
+  }
+  return headers;
+}
+
 // Send fire-and-forget view count increment request to Cloudflare worker
 export async function incrementPostViews(id: string): Promise<void> {
   if (!id) return;
-  const WORKER_URL = import.meta.env.WORKER_URL || 'http://localhost:8787';
 
   try {
     await fetch(`${WORKER_URL}/api/views/increment`, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: getHeaders(),
       body: JSON.stringify({ id }),
     });
   } catch (error) {
@@ -18,14 +28,10 @@ export async function incrementPostViews(id: string): Promise<void> {
 }
 
 export async function incrementProfileViews(): Promise<void> {
-  const WORKER_URL = import.meta.env.WORKER_URL || 'http://localhost:8787';
-  
   try {
     await fetch(`${WORKER_URL}/api/profile/views`, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: getHeaders(),
       body: JSON.stringify({ id: 'profile' }),
     });
   } catch (error) {
