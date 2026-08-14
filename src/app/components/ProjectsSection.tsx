@@ -4,43 +4,40 @@ import { Badge } from "./ui/badge";
 import { ProjectsSectionProps } from '../types';
 
 const getIconUrl = (tech: string) => {
-  const mapping: Record<string, string> = {
-    "next.js": "nextdotjs",
-    "nextjs": "nextdotjs",
-    "react": "react",
-    "typescript": "typescript",
-    "python": "python",
-    "selenium": "selenium",
-    "fastapi": "fastapi",
-    "go": "go",
-    "golang": "go",
-    "mongodb": "mongodb",
-    "postgresql": "postgresql",
-    "postgres": "postgresql",
-    "docker": "docker",
-    "digital ocean": "digitalocean",
-    "kubernetes": "kubernetes",
-    "gprc": "grpc",
-    "grpc": "grpc",
-    "redis": "redis",
-    "mysql": "mysql",
-    "gitaction": "githubactions",
-    "github actions": "githubactions",
-    "azure": "microsoftazure",
-    "django": "django",
-    "sqlite3": "sqlite",
-    "sqlite": "sqlite",
-    ".net": "dotnet",
-    "dotnet": "dotnet",
-    "tailwind css": "tailwindcss",
-    "tailwindcss": "tailwindcss",
-    "node.js": "nodedotjs",
-    "nodejs": "nodedotjs",
-    "flask": "flask",
+  const deviconMap: Record<string, string> = {
+    "next.js": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg",
+    "nextjs": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg",
+    "react": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg",
+    "typescript": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg",
+    "python": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg",
+    "selenium": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/selenium/selenium-original.svg",
+    "fastapi": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/fastapi/fastapi-original.svg",
+    "go": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/go/go-original.svg",
+    "golang": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/go/go-original.svg",
+    "mongodb": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg",
+    "postgresql": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg",
+    "postgres": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg",
+    "docker": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg",
+    "digital ocean": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/digitalocean/digitalocean-original.svg",
+    "kubernetes": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kubernetes/kubernetes-original.svg",
+    "grpc": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/grpc/grpc-original.svg",
+    "redis": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/redis/redis-original.svg",
+    "mysql": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg",
+    "gitaction": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/githubactions/githubactions-original.svg",
+    "github actions": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/githubactions/githubactions-original.svg",
+    "azure": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azure/azure-original.svg",
+    "microsoft azure": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azure/azure-original.svg",
+    "django": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/django/django-plain.svg",
+    "sqlite": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sqlite/sqlite-original.svg",
+    "dotnet": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dotnetcore/dotnetcore-original.svg",
+    ".net": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dotnetcore/dotnetcore-original.svg",
+    "tailwind css": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg",
+    "node.js": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg",
+    "flask": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flask/flask-original.svg"
   };
-  const slug = mapping[tech.toLowerCase().trim()];
-  if (!slug) return null;
-  return `https://cdn.simpleicons.org/${slug}`;
+
+  const key = tech.toLowerCase().trim();
+  return deviconMap[key] || null;
 };
 
 export function ProjectsSection({ projects }: ProjectsSectionProps) {
