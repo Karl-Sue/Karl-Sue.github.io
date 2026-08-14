@@ -5,7 +5,8 @@ import { Calendar, Clock, ArrowLeft, Tag } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { useEffect, useState } from "react";
-import { getPostById, incrementPostViews } from "../data/posts";
+import { getPostById } from "../data/posts";
+import { incrementPostViews } from "../utils/worker";
 
 export function PostDetailPage() {
   const { postId } = useParams<{ postId: string }>();

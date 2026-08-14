@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import { Card } from "../components/ui/card";
 import { Badge } from "../components/ui/badge";
 import { Calendar, Clock, Tag } from "lucide-react";
-import { Post, categories, getAllPosts } from "../data/posts";
+import { categories, getAllPosts } from "../data/posts";
+import { Post } from '../types';
 
 export function BlogPage() {
   const [posts, setPosts] = useState<Post[]>([]);
