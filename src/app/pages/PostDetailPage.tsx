@@ -19,8 +19,11 @@ export function PostDetailPage() {
     const loadPost = async () => {
       if (!postId || !post) return;
 
-      // Trigger non-blocking async view increment request to Cloudflare Worker
-      incrementPostViews(postId);
+      // Trigger non-blocking async view increment request to Cloudflare Worker if not already viewed in this session
+      if (!sessionStorage.getItem(postId)) {
+        sessionStorage.setItem(postId, "true");
+        incrementPostViews(postId);
+      }
 
       // If post has content (from Add Post form), use it
       if (post.content) {
