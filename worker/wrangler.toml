@@ -3,5 +3,12 @@ main = "src/index.ts"
 compatibility_date = "2024-09-23"
 compatibility_flags = ["nodejs_compat"]
 
-[vars]
-DB_NAME = "counter"
+[observability]
+enabled = true
+
+[observability.logs]
+enabled = true
+invocation_logs = true
+
+[observability.traces]
+enabled = true

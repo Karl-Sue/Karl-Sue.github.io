@@ -68,23 +68,3 @@ export function getPostById(id: string): Post | undefined {
 export function getAllPosts(): Post[] {
   return initialPosts;
 }
-
-// Send fire-and-forget view count increment request to Cloudflare worker
-export async function incrementPostViews(id: string): Promise<void> {
-  if (!id) return;
-  const WORKER_URL = import.meta.env.WORKER_URL || 'http://localhost:8787';
-
-  try {
-    await fetch(`${WORKER_URL}/api/views/increment`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ id }),
-    });
-  } catch (error) {
-    // Non-blocking: log warning only so UI render is never interrupted
-    console.warn(`Failed to increment view count for post ${id}:`, error);
-  }
-}
-

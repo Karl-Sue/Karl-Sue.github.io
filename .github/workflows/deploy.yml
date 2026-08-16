@@ -30,6 +30,9 @@ jobs:
         run: npm ci
         
       - name: Build the project
+        env:
+          VITE_API_KEY: ${{ secrets.VITE_API_KEY }}
+          VITE_WORKER_URL: ${{ secrets.VITE_WORKER_URL }}
         run: npm run build
         
       - name: Upload artifact

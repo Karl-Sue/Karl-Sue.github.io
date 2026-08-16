@@ -1,11 +1,12 @@
 import { connectToDatabase } from './db';
 import { Env, PostAnalyticsDoc } from '../types';
 import { hash62 } from './hash';
+import { validateApiKey } from './security';
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
-  'Access-Control-Allow-Headers': 'Content-Type',
+  'Access-Control-Allow-Headers': 'Content-Type, x-api-key, Authorization',
 };
 
 export default {
@@ -25,10 +26,18 @@ export default {
     }
 
     try {
+      const isValidApi = await validateApiKey(request, env);
+      if (!isValidApi) {
+        return new Response(
+          JSON.stringify({ status: 'error', message: 'Unauthorized: Invalid API key' }),
+          { status: 401, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        );
+      }
+
       const db = await connectToDatabase(env);
 
-      // Route: Increment view count for a post by ID
-      if (url.pathname === '/api/views/increment' || url.pathname === '/api/increment') {
+      // Route: Increment view count for post (/api/views/increment) or profile (/api/profile/views)
+      if (url.pathname === '/api/views/increment' || url.pathname === '/api/profile/views') {
         if (request.method !== 'POST') {
           return new Response(
             JSON.stringify({ status: 'error', message: 'Method not allowed' }),
@@ -36,12 +45,16 @@ export default {
           );
         }
 
-        const body = await request.json() as { id?: string };
-        const rawId = body?.id;
+        let body: { id?: string } = {};
+        try {
+          body = await request.json() as { id?: string };
+        } catch (_) {}
+
+        const rawId = body?.id || (url.pathname === '/api/profile/views' ? 'profile' : undefined);
 
         if (!rawId || typeof rawId !== 'string') {
           return new Response(
-            JSON.stringify({ status: 'error', message: 'Missing or invalid post id' }),
+            JSON.stringify({ status: 'error', message: 'Missing or invalid id' }),
             { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
           );
         }
@@ -54,7 +67,6 @@ export default {
 
         // Increment count in MongoDB using hashed id as key
         const collection = db.collection<PostAnalyticsDoc>('post_analytics');
-
 
         const result = await collection.findOneAndUpdate(
           { _id: hashedId },
@@ -73,7 +85,6 @@ export default {
           },
           { upsert: true, returnDocument: 'after' }
         );
-
 
         // Extract document gracefully across driver versions
         const doc = (result && 'value' in result && result.value) 

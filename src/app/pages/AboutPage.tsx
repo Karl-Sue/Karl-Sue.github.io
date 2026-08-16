@@ -1,6 +1,8 @@
+import { useEffect } from "react";
 import { ProfileHeader } from "../components/ProfileHeader";
 import { AboutSection } from "../components/AboutSection";
 import { SkillsSection } from "../components/SkillsSection";
+import { incrementProfileViews } from "../utils/worker";
 
 const profileData = {
   name: "Karl Hoang",
@@ -59,6 +61,14 @@ const skillCategories = [
 ];
 
 export function AboutPage() {
+  useEffect(() => {
+    // Check if user has already visited in this session
+    if (!sessionStorage.getItem("has_viewed_profile")) {
+      sessionStorage.setItem("has_viewed_profile", "true");
+      incrementProfileViews();
+    }
+  }, []);
+
   return (
     <div>
       <ProfileHeader {...profileData} />

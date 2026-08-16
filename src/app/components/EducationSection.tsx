@@ -1,11 +1,8 @@
 import { GraduationCap } from "lucide-react";
 import { Card } from "./ui/card";
 
-import { Education } from '../types';
+import { EducationSectionProps } from '../types';
 
-interface EducationSectionProps {
-  education: Education[];
-}
 
 export function EducationSection({ education }: EducationSectionProps) {
   return (
