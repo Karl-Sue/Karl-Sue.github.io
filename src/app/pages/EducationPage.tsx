@@ -1,6 +1,4 @@
 import { EducationSection } from "../components/EducationSection";
-import { Card } from "../components/ui/card";
-import { Badge } from "../components/ui/badge";
 import { Award } from "lucide-react";
 
 const education = [
@@ -9,7 +7,7 @@ const education = [
     degree: "Master of Information Technology",
     field: "Software System",
     period: "Jul 2024 - Jul 2026",
-    description: "GPA: 6.25/7",
+    description: "Graduated · WAM: 78.8/100",
     logo: "/UWA logo.png",
   },
   {
@@ -43,58 +41,44 @@ const certifications = [
 
 export function EducationPage() {
   return (
-    <div className="py-12 bg-gray-50 min-h-screen">
+    <div className="bg-gray-50 py-12">
       <div className="max-w-5xl mx-auto px-6">
-        <div className="mb-8">
-          <h1 className="font-serif text-5xl font-bold mb-8 text-gray-900">Education</h1>
-          <p className="text-lg text-gray-700 leading-relaxed">
-            My academic background and professional certifications
-          </p>
-        </div>
-
-        <EducationSection education={education} />
-
-        <div className="mt-12">
-          <h2 className="text-3xl mb-6 font-serif font-bold text-gray-900">Certifications</h2>
-          <div className="grid md:grid-cols-2 gap-4">
-            {certifications.map((cert, idx) => (
-              <Card key={idx} className="p-6">
-                <div className="flex gap-4">
-                  <div className="flex-shrink-0">
-                    <div className="w-12 h-12 bg-white rounded-lg border border-gray-100 flex items-center justify-center overflow-hidden">
-                      {cert.logo ? (
-                        <img 
-                          src={cert.logo} 
-                          alt={cert.issuer} 
-                          className="w-full h-full object-contain p-1"
-                        />
-                      ) : (
-                        <Award className="w-6 h-6 text-green-600" />
-                      )}
-                    </div>
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-lg font-semibold text-gray-900 mb-1">{cert.name}</h3>
-                    <p className="text-sm text-gray-600 mb-1">{cert.issuer}</p>
-                    {cert.verification_id && (
-                      <p className="text-xs text-gray-500 mb-3 font-mono">
-                        Credential ID:{" "}
-                        <a 
-                          href={cert.url} 
-                          target="_blank" 
-                          rel="noopener noreferrer" 
-                          className="text-blue-600 hover:text-blue-700 hover:underline select-all font-medium"
-                        >
-                          {cert.verification_id}
-                        </a>
-                      </p>
-                    )}
-                    <Badge variant="secondary">{cert.date}</Badge>
-                  </div>
-                </div>
-              </Card>
-            ))}
+        <div className="grid items-start gap-16 lg:grid-cols-[minmax(0,1fr)_250px]">
+          <div>
+            <div className="mb-5">
+              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-gray-500">Academic record · 2021–2026</p>
+              <h2 className="mt-2 font-serif text-3xl font-bold text-gray-900">Education</h2>
+            </div>
+            <EducationSection education={education} />
           </div>
+
+          <aside className="border-l-2 border-blue-600 pl-5 lg:sticky lg:top-24">
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-blue-700">Professional credential</p>
+            {certifications.map((cert, idx) => (
+              <div key={idx} className="mt-6">
+                <div className="flex h-14 w-14 items-center justify-center overflow-hidden rounded-xl border border-gray-200 bg-white p-1">
+                  {cert.logo ? (
+                    <img src={cert.logo} alt={cert.issuer} className="h-full w-full object-contain" />
+                  ) : (
+                    <Award className="h-7 w-7 text-blue-600" />
+                  )}
+                </div>
+                <h3 className="mt-5 text-xl font-semibold leading-snug text-gray-900">{cert.name}</h3>
+                <p className="mt-2 text-sm text-gray-600">{cert.issuer}</p>
+                <p className="mt-1 text-sm text-gray-500">Valid {cert.date}</p>
+                {cert.verification_id && (
+                  <a
+                    href={cert.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-6 inline-flex items-center text-sm font-semibold text-blue-700 hover:text-blue-900 hover:underline"
+                  >
+                    Verify credential →
+                  </a>
+                )}
+              </div>
+            ))}
+          </aside>
         </div>
       </div>
     </div>
