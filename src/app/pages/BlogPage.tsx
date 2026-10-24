@@ -34,7 +34,6 @@ export function BlogPage() {
       <div className="max-w-5xl mx-auto px-6">
         {/* Introduction Section */}
         <div className="mb-12">
-          <h1 className="font-serif text-5xl font-bold mb-8 text-gray-900">Blog</h1>
           <Card className="p-6 bg-gradient-to-r from-blue-50 to-indigo-50 border-blue-200">
             <p className="text-lg text-gray-700 leading-relaxed mb-3">
               Welcome to my digital garden 🌱 where I document my journey as a

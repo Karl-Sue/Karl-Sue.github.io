@@ -21,12 +21,12 @@ export function Navigation() {
     <nav className="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
       <div className="max-w-5xl mx-auto px-6">
         <div className="flex items-center justify-between h-16">
-          <Link to="/" className="font-serif text-4xl text-gray-900">
+          <Link to="/" className="shrink-0 whitespace-nowrap font-serif text-4xl text-gray-900">
             Karl Hoang
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex gap-1">
+          <div className="hidden gap-1 min-[935px]:flex">
             {navItems.map((item) => {
               const Icon = item.icon;
               const isActive = location.pathname === item.path;
@@ -48,7 +48,7 @@ export function Navigation() {
           </div>
 
           {/* Mobile Navigation - Sheet */}
-          <div className="md:hidden">
+          <div className="min-[935px]:hidden">
             <Sheet open={open} onOpenChange={setOpen}>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon">

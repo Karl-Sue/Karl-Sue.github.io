@@ -47,12 +47,17 @@ const getCompanyDuration = (roles: Role[]): string => {
 
 export function ExperienceSection({ experiences }: ExperienceSectionProps) {
   return (
-    <section className="py-8">
-      <div className="max-w-5xl mx-auto border-t border-gray-900/15">
+    <section className="py-0">
+      <div className="mx-auto max-w-5xl px-4 sm:px-6">
         {experiences.map((exp, idx) => {
           const totalDuration = getCompanyDuration(exp.roles);
           return (
-            <article key={idx} className="grid gap-8 border-b border-gray-900/15 py-10 md:grid-cols-[220px_minmax(0,1fr)] md:gap-12 md:py-14">
+            <article
+              key={idx}
+              className={`grid gap-8 py-10 md:grid-cols-[220px_minmax(0,1fr)] md:gap-20 md:py-14 ${
+                idx < experiences.length - 1 ? "border-b border-gray-900/15" : ""
+              }`}
+            >
               <header>
                 <h3 className="font-serif text-2xl font-bold tracking-tight text-gray-900">{exp.company}</h3>
                 <div className="mt-2 space-y-1 text-xs uppercase tracking-[0.12em] text-gray-500">
@@ -66,13 +71,13 @@ export function ExperienceSection({ experiences }: ExperienceSectionProps) {
                   const isCurrent = role.endDate.toLowerCase() === "present";
                   return (
                     <div key={rIdx} className={`group relative pl-7 ${rIdx < exp.roles.length - 1 ? "pb-12" : ""}`}>
-                      <span className={`absolute -left-[5px] top-1.5 h-2.5 w-2.5 rounded-full border-2 border-[#f4f2ee] ${isCurrent ? "bg-gray-900" : "bg-gray-400"}`} />
+                      <span className={`absolute -left-[5px] top-1.5 h-2.5 w-2.5 rounded-full border-2 border-gray-50 ${isCurrent ? "bg-blue-600" : "bg-gray-400"}`} />
 
                       <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
                         <div>
                           <div className="flex flex-wrap items-center gap-2">
                             <h4 className="text-xl font-semibold tracking-tight text-gray-900">{role.position}</h4>
-                            {isCurrent && <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-gray-900">Current</span>}
+                            {isCurrent && <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-blue-700">Current</span>}
                           </div>
                           <div className="mt-1 flex flex-wrap items-center gap-2 text-sm text-gray-500">
                             {role.type && <span>{role.type}</span>}

@@ -9,7 +9,6 @@ const experiences = [
         position: "System Officer",
         startDate: "2026-05",
         endDate: "present",
-        type: "Volunteer",
         location: "Perth, Western Australia, Australia",
         achievements: [
           "Using Python to automate processes, maintain system uptime, and catch faults early.",
@@ -72,17 +71,8 @@ const experiences = [
 
 export function ExperiencePage() {
   return (
-    <div className="min-h-screen bg-background py-12">
-      <div className="max-w-5xl mx-auto px-6">
-        <div className="mb-8 border-b border-gray-900/15 pb-10 md:mb-12 md:pb-14">
-          <p className="mb-5 text-xs font-semibold uppercase tracking-[0.18em] text-gray-500">Career timeline</p>
-          <h1 className="font-serif text-5xl font-bold tracking-tight text-gray-900 md:text-7xl">Experience</h1>
-          <p className="mt-5 max-w-xl text-lg leading-relaxed text-gray-600">
-            A record of the systems, products, and teams I have helped move forward.
-          </p>
-        </div>
+    <div className="min-h-screen bg-gray-50 py-0">
         <ExperienceSection experiences={experiences} />
-      </div>
     </div>
   );
 }
