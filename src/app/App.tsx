@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import { Navigation } from "./components/Navigation";
 import { AboutPage } from "./pages/AboutPage";
 import { ExperiencePage } from "./pages/ExperiencePage";
@@ -10,6 +10,7 @@ import { ContactPage } from "./pages/ContactPage";
 import { useEffect } from "react";
 
 function AppContent() {
+  const location = useLocation();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -27,15 +28,17 @@ function AppContent() {
   return (
     <div className="min-h-screen bg-white">
       <Navigation />
-      <Routes>
-        <Route path="/" element={<AboutPage />} />
-        <Route path="/experience" element={<ExperiencePage />} />
-        <Route path="/projects" element={<ProjectsPage />} />
-        <Route path="/blog" element={<BlogPage />} />
-        <Route path="/blog/:postId" element={<PostDetailPage />} />
-        <Route path="/education" element={<EducationPage />} />
-        <Route path="/contact" element={<ContactPage />} />
-      </Routes>
+      <div key={`${location.pathname}${location.search}`} className="route-transition">
+        <Routes>
+          <Route path="/" element={<AboutPage />} />
+          <Route path="/experience" element={<ExperiencePage />} />
+          <Route path="/projects" element={<ProjectsPage />} />
+          <Route path="/blog" element={<BlogPage />} />
+          <Route path="/blog/:postId" element={<PostDetailPage />} />
+          <Route path="/education" element={<EducationPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+        </Routes>
+      </div>
 
       {/* Footer */}
       <footer className="bg-gray-900 text-white py-8 mt-auto">
