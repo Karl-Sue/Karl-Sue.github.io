@@ -6,14 +6,15 @@ const experiences = [
     locationType: "On-site",
     roles: [
       {
-        position: "Volunteer System Engineer",
+        position: "System Officer",
         startDate: "2026-05",
         endDate: "present",
         type: "Volunteer",
         location: "Perth, Western Australia, Australia",
         achievements: [
           "Using Python to automate processes, maintain system uptime, and catch faults early.",
-          "Partnering closely with internal teams to understand their day-to-day operations and business workflows."
+          "Partnering closely with internal teams to understand their day-to-day operations and business needs.",
+          "Designing and suggesting technical solutions to keep our systems running smoothly."
         ],
         skills: ["Python", "Google Cloud Platform (GCP)"]
       },
