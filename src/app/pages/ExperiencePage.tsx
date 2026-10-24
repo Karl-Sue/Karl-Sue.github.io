@@ -21,7 +21,7 @@ const experiences = [
       {
         position: "System Engineer (Intern)",
         startDate: "2026-02",
-        endDate: "2026-05",
+        endDate: "2026-04",
         type: "Internship",
         location: "Perth, WA",
         description: "Managed and improved core systems like GCP and Salesforce to keep business operations running smoothly. I focused on connecting different software tools, automating manual tasks using Agile methods, and creating clear technical guides to help the team scale.",
@@ -72,12 +72,13 @@ const experiences = [
 
 export function ExperiencePage() {
   return (
-    <div className="py-12 bg-gray-50 min-h-screen">
+    <div className="min-h-screen bg-background py-12">
       <div className="max-w-5xl mx-auto px-6">
-        <div className="mb-8">
-          <h1 className="font-serif text-5xl font-bold mb-8 text-gray-900">Experience</h1>
-          <p className="text-lg text-gray-700 leading-relaxed">
-            A comprehensive overview of my professional journey
+        <div className="mb-8 border-b border-gray-900/15 pb-10 md:mb-12 md:pb-14">
+          <p className="mb-5 text-xs font-semibold uppercase tracking-[0.18em] text-gray-500">Career timeline</p>
+          <h1 className="font-serif text-5xl font-bold tracking-tight text-gray-900 md:text-7xl">Experience</h1>
+          <p className="mt-5 max-w-xl text-lg leading-relaxed text-gray-600">
+            A record of the systems, products, and teams I have helped move forward.
           </p>
         </div>
         <ExperienceSection experiences={experiences} />

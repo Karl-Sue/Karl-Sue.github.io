@@ -1,7 +1,3 @@
-import { Briefcase } from "lucide-react";
-import { Badge } from "./ui/badge";
-import { Card } from "./ui/card";
-
 import { Role, ExperienceSectionProps } from '../types';
 
 const parseYearMonth = (str: string): Date => {
@@ -52,88 +48,62 @@ const getCompanyDuration = (roles: Role[]): string => {
 export function ExperienceSection({ experiences }: ExperienceSectionProps) {
   return (
     <section className="py-8">
-      <div className="max-w-5xl mx-auto space-y-8">
+      <div className="max-w-5xl mx-auto border-t border-gray-900/15">
         {experiences.map((exp, idx) => {
           const totalDuration = getCompanyDuration(exp.roles);
           return (
-            <Card key={idx} className="p-6 md:p-8 border border-gray-200 bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow">
-              <div className="flex gap-5 items-start">
-                {/* Logo/Icon Container */}
-                <div className="flex-shrink-0">
-                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-100 flex items-center justify-center font-serif text-lg font-bold text-blue-600 shadow-sm">
-                    {exp.company.charAt(0)}
-                  </div>
+            <article key={idx} className="grid gap-8 border-b border-gray-900/15 py-10 md:grid-cols-[220px_minmax(0,1fr)] md:gap-12 md:py-14">
+              <header>
+                <h3 className="font-serif text-2xl font-bold tracking-tight text-gray-900">{exp.company}</h3>
+                <div className="mt-2 space-y-1 text-xs uppercase tracking-[0.12em] text-gray-500">
+                  {totalDuration && <p>{totalDuration}</p>}
+                  {exp.locationType && <p>{exp.locationType}</p>}
                 </div>
-                
-                {/* Company Info & Timeline */}
-                <div className="flex-1 min-w-0">
-                  <div className="mb-4">
-                    <h3 className="text-xl font-bold text-gray-900 tracking-tight truncate">{exp.company}</h3>
-                    <div className="flex flex-wrap items-center gap-1.5 mt-1 text-sm text-gray-500">
-                      {totalDuration && <span>{totalDuration}</span>}
-                      {totalDuration && exp.locationType && <span>•</span>}
-                      {exp.locationType && <span>{exp.locationType}</span>}
-                    </div>
-                  </div>
-                
-                {/* Timeline of Roles */}
-                <div className="relative pl-6 border-l-2 border-gray-150 space-y-8 mt-6">
-                  {exp.roles.map((role, rIdx) => (
-                    <div key={rIdx} className="relative group">
-                      {/* Timeline Node Point */}
-                      <div className="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full border-[3px] border-white bg-gray-300 group-hover:bg-blue-500 group-hover:scale-110 transition-all duration-200 shadow-sm" />
-                      
-                      <div className="space-y-2">
-                        <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1">
-                          <h4 className="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
-                            {role.position}
-                          </h4>
-                          <span className="text-xs font-medium text-gray-500 bg-gray-100 px-2 py-0.5 rounded-full whitespace-nowrap self-start sm:self-auto">
-                            {formatMonthYear(role.startDate)} - {formatMonthYear(role.endDate)} &middot; {formatDuration(getDurationInMonths(parseYearMonth(role.startDate), parseYearMonth(role.endDate)))}
-                          </span>
-                        </div>
-                        
-                        <div className="flex flex-wrap gap-1.5 items-center text-sm text-gray-500">
-                          {role.type && <span className="font-medium text-gray-700">{role.type}</span>}
-                          {role.type && role.location && <span>•</span>}
-                          {role.location && <span>{role.location}</span>}
-                        </div>
+              </header>
 
-                        {role.description && (
-                          <p className="text-[15px] text-gray-600 leading-relaxed pt-1">
-                            {role.description}
-                          </p>
-                        )}
+              <div className="relative border-l border-gray-900/20">
+                {exp.roles.map((role, rIdx) => {
+                  const isCurrent = role.endDate.toLowerCase() === "present";
+                  return (
+                    <div key={rIdx} className={`group relative pl-7 ${rIdx < exp.roles.length - 1 ? "pb-12" : ""}`}>
+                      <span className={`absolute -left-[5px] top-1.5 h-2.5 w-2.5 rounded-full border-2 border-[#f4f2ee] ${isCurrent ? "bg-gray-900" : "bg-gray-400"}`} />
 
-                        {role.achievements && role.achievements.length > 0 && (
-                          <ul className="list-disc pl-4 space-y-1.5 text-[14px] text-gray-600 pt-1 leading-relaxed">
-                            {role.achievements.map((ach, aIdx) => (
-                              <li key={aIdx}>{ach}</li>
-                            ))}
-                          </ul>
-                        )}
-
-                        {role.skills && role.skills.length > 0 && (
-                          <div className="flex flex-wrap gap-1.5 pt-2 items-center">
-                            <span className="text-xs font-semibold text-gray-400 uppercase tracking-wider mr-1">Skills:</span>
-                            {role.skills.map((skill, sIdx) => (
-                              <Badge 
-                                key={sIdx} 
-                                variant="secondary"
-                                className="bg-gray-50 hover:bg-gray-100 text-gray-600 border border-gray-200/50 text-[11px] px-2 py-0.5 rounded-md font-medium"
-                              >
-                                {skill}
-                              </Badge>
-                            ))}
+                      <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
+                        <div>
+                          <div className="flex flex-wrap items-center gap-2">
+                            <h4 className="text-xl font-semibold tracking-tight text-gray-900">{role.position}</h4>
+                            {isCurrent && <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-gray-900">Current</span>}
                           </div>
-                        )}
+                          <div className="mt-1 flex flex-wrap items-center gap-2 text-sm text-gray-500">
+                            {role.type && <span>{role.type}</span>}
+                            {role.type && role.location && <span aria-hidden="true">/</span>}
+                            {role.location && <span>{role.location}</span>}
+                          </div>
+                        </div>
+                        <span className="shrink-0 text-xs uppercase tracking-[0.08em] text-gray-500 sm:text-right">
+                          {formatMonthYear(role.startDate)} - {formatMonthYear(role.endDate)}
+                          <span className="block normal-case tracking-normal">{formatDuration(getDurationInMonths(parseYearMonth(role.startDate), parseYearMonth(role.endDate)))}</span>
+                        </span>
                       </div>
+
+                      {role.description && <p className="mt-5 max-w-2xl text-[15px] leading-7 text-gray-600">{role.description}</p>}
+
+                      {role.achievements && role.achievements.length > 0 && (
+                        <ul className="mt-5 max-w-2xl list-disc space-y-2 pl-5 text-[14px] leading-6 text-gray-600 marker:text-gray-400">
+                          {role.achievements.map((ach, aIdx) => <li key={aIdx}>{ach}</li>)}
+                        </ul>
+                      )}
+
+                      {role.skills && role.skills.length > 0 && (
+                        <div className="mt-5 flex flex-wrap gap-x-4 gap-y-2 text-xs text-gray-500">
+                          {role.skills.map((skill, sIdx) => <span key={sIdx}>{skill}</span>)}
+                        </div>
+                      )}
                     </div>
-                  ))}
-                </div>
+                  );
+                })}
               </div>
-            </div>
-          </Card>
+            </article>
           );
         })}
       </div>
