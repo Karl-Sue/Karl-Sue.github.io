@@ -29,24 +29,24 @@ const skillCategories = [
   {
     category: "Backend Development",
     skills: [
-      { name: "Node.js", level: "Beginner" as const },
       { name: "Python", level: "Intermediate" as const },
       { name: "Golang", level: "Beginner" as const },
-      { name: "C#", level: "Beginner" as const },
+      { name: "Node.js", level: "Beginner" as const },
       { name: "PostgreSQL", level: "Beginner" as const },
-      { name: "MongoDB", level: "Beginner" as const },
       { name: "MySQL", level: "Intermediate" as const },
+      { name: "MongoDB", level: "Beginner" as const },
+      { name: "C#", level: "Beginner" as const },
     ],
   },
   {
     category: "Cloud & DevOps",
     skills: [
-      { name: "AWS", level: "Intermediate" as const },
       { name: "Docker", level: "Intermediate" as const },
       { name: "Kubernetes", level: "Beginner" as const },
-      { name: "CI/CD", level: "Beginner" as const },
       { name: "Git Actions", level: "Intermediate" as const },
       { name: "Azure", level: "Beginner" as const },
+      { name: "AWS", level: "Intermediate" as const },
+      { name: "CI/CD", level: "Beginner" as const },
     ],
   },
   {
