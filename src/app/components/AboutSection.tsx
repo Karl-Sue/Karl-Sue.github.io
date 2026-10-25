@@ -38,7 +38,7 @@ export function AboutSection({ bio }: AboutSectionProps) {
     <section className="pt-12 pb-12 bg-white">
       <div className="max-w-5xl mx-auto px-4 sm:px-6">
         {/* Section Header - Harmonized with Skills */}
-        <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between mb-10 pb-4 border-b border-gray-100">
+        <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between mb-10 pb-4 border-b border-gray-200">
           <div>
             <h2 className="font-serif text-3xl font-bold tracking-tight text-gray-900">
               About Me
@@ -55,7 +55,7 @@ export function AboutSection({ bio }: AboutSectionProps) {
         {/* Executive 2-Column Layout */}
         <div className="grid grid-cols-1 md:grid-cols-[250px_1fr] gap-8 md:gap-12 items-start">
           {/* Left Column: Typographic Fact Sheet */}
-          <div className="space-y-6 md:border-r md:border-gray-100 md:pr-8">
+          <div className="space-y-6 md:border-r md:border-gray-200 md:pr-8">
             {keyFacts.map((fact, idx) => {
               const Icon = fact.icon;
               return (
@@ -95,7 +95,7 @@ export function AboutSection({ bio }: AboutSectionProps) {
             </div>
 
             {/* Focus Tags */}
-            <div className="pt-5 border-t border-gray-100 flex flex-wrap items-center gap-2">
+            <div className="pt-5 border-t border-gray-200 flex flex-wrap items-center gap-2">
               <span className="text-[11px] font-semibold text-gray-400 uppercase tracking-[0.14em] mr-1">
                 Core Focus:
               </span>

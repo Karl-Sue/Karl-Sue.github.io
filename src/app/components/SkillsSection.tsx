@@ -110,10 +110,10 @@ export function SkillsSection({ skillCategories }: SkillsSectionProps) {
   const totalSkills = skillCategories.reduce((acc, cat) => acc + cat.skills.length, 0);
 
   return (
-    <section id="skills-section" className="pt-10 pb-14 border-t border-gray-100 bg-white scroll-mt-6">
+    <section id="skills-section" className="pt-10 pb-14 border-t border-gray-200 bg-white scroll-mt-6">
       <div className="max-w-5xl mx-auto px-4 sm:px-6">
         {/* Section Header */}
-        <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between mb-8 pb-4 border-b border-gray-100">
+        <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between mb-8 pb-4 border-b border-gray-200">
           <div>
             <h2 className="font-serif text-3xl font-bold tracking-tight text-gray-900">
               Skills & Technologies
@@ -128,7 +128,7 @@ export function SkillsSection({ skillCategories }: SkillsSectionProps) {
         </div>
 
         {/* Natural Row Layout */}
-        <div className="divide-y divide-gray-200/70">
+        <div className="divide-y divide-gray-200">
           {skillCategories.map((category, idx) => {
             const { icon: CategoryIcon, subtitle, accentBg } = getCategoryMeta(category.category);
 
