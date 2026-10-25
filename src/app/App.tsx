@@ -26,7 +26,7 @@ function AppContent() {
   }, [navigate]);
 
   return (
-    <div className="flex min-h-screen flex-col bg-white">
+    <div className="flex min-h-screen flex-col bg-white overflow-x-hidden w-full">
       <Navigation />
       <div key={`${location.pathname}${location.search}`} className="route-transition">
         <Routes>

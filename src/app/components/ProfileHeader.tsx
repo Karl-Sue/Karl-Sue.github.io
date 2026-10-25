@@ -36,7 +36,7 @@ export function ProfileHeader({
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="w-4 h-4" />
-                <a href={`mailto:${email}`} className="hover:text-blue-600">
+                <a href={`mailto:${email}`} className="hover:text-blue-600 break-all">
                   {email}
                 </a>
               </div>

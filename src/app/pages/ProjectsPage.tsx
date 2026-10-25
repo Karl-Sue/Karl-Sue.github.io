@@ -4,8 +4,8 @@ import { projects } from "../data/projects";
 
 export function ProjectsPage() {
   return (
-    <div className="py-12 min-h-screen">
-        <ProjectsSection projects={projects} />
+    <div className="py-8 sm:py-12 min-h-screen">
+      <ProjectsSection projects={projects} />
     </div>
   );
 }

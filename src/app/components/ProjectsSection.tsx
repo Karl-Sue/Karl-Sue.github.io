@@ -42,13 +42,13 @@ const getIconUrl = (tech: string) => {
 
 export function ProjectsSection({ projects }: ProjectsSectionProps) {
   return (
-    <section className="py-8">
-      <div className="max-w-5xl mx-auto">
-        <div className="grid md:grid-cols-2 gap-8">
+    <section>
+      <div className="max-w-5xl mx-auto px-4 sm:px-6">
+        <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
           {projects.map((project, idx) => (
             <div 
               key={idx} 
-              className="group relative flex flex-col justify-between rounded-2xl border border-gray-200 bg-white p-6 shadow-sm hover:shadow-lg hover:shadow-blue-500/10 hover:border-blue-500 hover:ring-2 hover:ring-blue-500/20 transition-all duration-300 hover:-translate-y-1.5"
+              className="group relative flex flex-col justify-between rounded-2xl border border-gray-200 bg-white p-5 sm:p-6 shadow-sm hover:shadow-lg hover:shadow-blue-500/10 hover:border-blue-500 hover:ring-2 hover:ring-blue-500/20 transition-all duration-300 hover:-translate-y-1.5"
             >
               
               {project.image && (
@@ -97,7 +97,7 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
                     })}
                   </div>
                   
-                  <div className="flex gap-3 pt-4 border-t border-gray-100">
+                  <div className="flex flex-wrap gap-2.5 sm:gap-3 pt-4 border-t border-gray-100">
                     {project.link && (
                       <a
                         href={project.link}

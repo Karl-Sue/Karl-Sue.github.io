@@ -230,16 +230,12 @@ export function SkillsSection({ skillCategories }: SkillsSectionProps) {
                         </div>
 
                         {/* Hover Popup for Skills with Projects */}
-                        {hasProjects && (
+                        {hasProjects && isPopupOpen && (
                           <div
-                            className={`absolute bottom-full mb-2.5 left-0 sm:left-1/2 sm:-translate-x-1/2 z-50 w-72 sm:w-80 max-w-[calc(100vw-2rem)] rounded-xl border border-gray-200/95 bg-white p-3.5 shadow-xl shadow-gray-900/10 transition-all duration-200 after:absolute after:top-full after:left-0 after:right-0 after:h-3 after:content-[''] ${
-                              isPopupOpen
-                                ? "opacity-100 visible pointer-events-auto translate-y-0"
-                                : "opacity-0 invisible pointer-events-none translate-y-1"
-                            }`}
+                            className="absolute bottom-full mb-2.5 left-1/2 -translate-x-1/2 z-50 w-72 sm:w-80 max-w-[calc(100vw-2rem)] rounded-xl border border-gray-200/95 bg-white p-3.5 shadow-xl shadow-gray-900/10 transition-all duration-200 after:absolute after:top-full after:left-0 after:right-0 after:h-3 after:content-['']"
                           >
                             {/* Downward Pointer Arrow */}
-                            <div className="absolute top-full left-6 sm:left-1/2 sm:-translate-x-1/2 w-0 h-0 border-x-4 border-x-transparent border-t-4 border-t-white drop-shadow-xs" />
+                            <div className="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-x-4 border-x-transparent border-t-4 border-t-white drop-shadow-xs" />
 
                             {/* Popup Header */}
                             <div className="flex items-center justify-between pb-2 border-b border-gray-100">

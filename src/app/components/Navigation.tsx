@@ -21,7 +21,7 @@ export function Navigation() {
     <nav className="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
       <div className="max-w-5xl mx-auto px-6">
         <div className="flex items-center justify-between h-16">
-          <Link to="/" className="shrink-0 whitespace-nowrap font-serif text-4xl text-gray-900">
+          <Link to="/" className="shrink-0 whitespace-nowrap font-serif text-2xl sm:text-3xl md:text-4xl text-gray-900">
             Karl Hoang
           </Link>
 
