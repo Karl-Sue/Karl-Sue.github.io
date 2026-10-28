@@ -81,27 +81,27 @@ const getCategoryMeta = (category: string) => {
     return {
       icon: Code2,
       subtitle: "Client Applications & UI",
-      accentBg: "bg-indigo-50 border-indigo-100/80 text-indigo-600",
+
     };
   }
   if (lower.includes("back")) {
     return {
       icon: Server,
       subtitle: "APIs, Runtimes & Data",
-      accentBg: "bg-emerald-50 border-emerald-100/80 text-emerald-600",
+
     };
   }
   if (lower.includes("cloud") || lower.includes("devops")) {
     return {
       icon: Cloud,
       subtitle: "Infrastructure & CI/CD",
-      accentBg: "bg-sky-50 border-sky-100/80 text-sky-600",
+
     };
   }
   return {
     icon: Terminal,
     subtitle: "Workflow, Testing & Design",
-    accentBg: "bg-amber-50 border-amber-100/80 text-amber-600",
+
   };
 };
 
@@ -130,7 +130,7 @@ export function SkillsSection({ skillCategories }: SkillsSectionProps) {
         {/* Natural Row Layout */}
         <div className="divide-y divide-gray-200">
           {skillCategories.map((category, idx) => {
-            const { icon: CategoryIcon, subtitle, accentBg } = getCategoryMeta(category.category);
+            const { icon: CategoryIcon, subtitle } = getCategoryMeta(category.category);
 
             // Bring skills with associated projects to the front across all domains.
             // In Backend Development, ensure Python and Golang are the top priority.
@@ -162,9 +162,9 @@ export function SkillsSection({ skillCategories }: SkillsSectionProps) {
                 {/* Domain Title Column */}
                 <div className="flex items-start gap-3">
                   <div
-                    className={`w-8 h-8 rounded-lg border flex items-center justify-center shrink-0 mt-0.5 shadow-xs ${accentBg}`}
+                    className="w-8 h-8 flex items-center justify-center shrink-0 mt-0.5 text-gray-900"
                   >
-                    <CategoryIcon className="w-4 h-4" />
+                    <CategoryIcon className="w-5 h-5" />
                   </div>
                   <div>
                     <h3 className="text-[15px] font-bold text-gray-900 tracking-tight leading-snug">
